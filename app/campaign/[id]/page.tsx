@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { getCookie } from "cookies-next";
 import { ProfileInterface } from "@/app/interface/ProfileInterface";
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent, useCallback } from "react";
 import { getAuthHeaders } from "@/app/component/Headers";
 import axios from "axios";
 import { campaignsInterface } from "@/app/interface/campaignsInterface";
@@ -38,7 +38,7 @@ export default function CampaignPage() {
   const [oldDonation, setOldDonation] = useState<FormEntry[]>();
   const [image, setImage] = useState<File | null>();
 
-  const fetchcampaign = async () => {
+  const fetchcampaign = useCallback(async () => {
     try {
       const url =
         process.env.NEXT_PUBLIC_API_URL + "/donation/campaigndetails/" + id;
@@ -55,7 +55,7 @@ export default function CampaignPage() {
 
       console.log(e.message);
     }
-  };
+  }, [id]);
 
   const fetchOldDonation = async () => {
     try {
@@ -81,7 +81,7 @@ export default function CampaignPage() {
     const userProfile = getCookie("profile");
     setProfile(JSON.parse(userProfile?.toString() || "{}"));
     fetchcampaign();
-  }, []);
+  }, [fetchcampaign]);
 
   const nextStep = () => setStep(step === 4 ? 4 : step + 1);
   const prevStep = () => setStep(step === 1 ? 1 : step - 1);
@@ -272,7 +272,7 @@ export default function CampaignPage() {
         formData.append("image", image as Blob);
         formData.append("status", "PENDING");
 
-        const donation = await axios.post(url, formData, { headers });
+        await axios.post(url, formData, { headers });
       }
       Swal.close();
       nextStep();
@@ -852,7 +852,7 @@ export default function CampaignPage() {
                 oldDonation.map((old: FormEntry) => (
                   <button
                     key={old.id}
-                    onClick={(e) => handleSeleted(old)}
+                    onClick={() => handleSeleted(old)}
                     className="btn btn-outline flex flex-col justify-center items-center border-1 w-full h-20"
                   >
                     <h1 className="text-lg text-left w-full truncate">

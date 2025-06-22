@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ProfileInterface } from "../interface/ProfileInterface";
 import { getCookie } from "cookies-next";
 import { getAuthHeaders } from "../component/Headers";
@@ -35,7 +35,7 @@ export default function StatusPage() {
     setIsLoading(false);
   }, []);
 
-  const fetchDonation = async () => {
+  const fetchDonation = useCallback(async () => {
     try {
       const url =
         process.env.NEXT_PUBLIC_API_URL + `/donation/old/${profile?.userId}`;
@@ -49,11 +49,11 @@ export default function StatusPage() {
       const e = error as Error;
       console.log(e);
     }
-  };
+  }, [profile]);
 
   useEffect(() => {
     fetchDonation();
-  }, [profile]);
+  }, [profile, fetchDonation]);
 
   if (isLoading == true) {
     return (
@@ -73,7 +73,7 @@ export default function StatusPage() {
         <h1 className="text-2xl text-center font-bold my-2">สถานะกองบุญ</h1>
         <div className="flex flex-col gap-2 p-2">
           {Array.isArray(olds) &&
-            olds.map((old: any) => (
+            olds.map((old: campaign_transactionsInterface) => (
               <div
                 key={old.id}
                 className="w-full h-16 rounded-xl text-white bg-red-950 flex justify-between items-center p-2"

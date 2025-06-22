@@ -16,4 +16,6 @@ export interface campaign_transactionsInterface {
   transactiondetails: transactiondetailsInterface[];
   customer: customersInterface;
   transactionID: string;
+  many_names: string;
+  name: string;
 }

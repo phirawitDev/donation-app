@@ -42,6 +42,6 @@ export async function GET(req: Request) {
 
     return NextResponse.redirect(new URL(baseUrl, req.url));
   } catch (error) {
-    return error;
+    return NextResponse.json(error);
   }
 }
