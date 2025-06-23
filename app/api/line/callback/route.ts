@@ -34,6 +34,15 @@ export async function GET(req: Request) {
 
     const profile = await profileResponse.data;
 
+    const url = process.env.NEXT_PUBLIC_API_URL + "/n8n/webhook";
+    const data = {
+      displayName: profile.displayName,
+      uid: profile.userId,
+      from: "line",
+    };
+
+    await axios.post(url, data);
+
     const cookieStore = await cookies();
     cookieStore.set("profile", JSON.stringify(profile), {
       maxAge: 60 * 60 * 24,
