@@ -6,6 +6,7 @@ import { getCookie } from "cookies-next";
 import { getAuthHeaders } from "../component/Headers";
 import axios from "axios";
 import { campaign_transactionsInterface } from "../interface/campaign_transactionsInterface";
+import Link from "next/link";
 
 export default function StatusPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -97,9 +98,11 @@ export default function StatusPage() {
                     </h1>
                   )}
                   {old.status === "SENDIMG" && (
-                    <h1 className="px-2 text-md text-center bg-success rounded-xl">
-                      ส่งภาพแล้ว
-                    </h1>
+                    <Link href={`/status/${old.id}`}>
+                      <h1 className="px-2 text-md text-center bg-success rounded-xl">
+                        ส่งภาพแล้ว
+                      </h1>
+                    </Link>
                   )}
                 </div>
               </div>

@@ -257,6 +257,9 @@ export default function CampaignPage() {
         const headers = getAuthHeaders();
         const form = forms[i];
         const formData = new FormData();
+        if (i === 0) {
+          formData.append("pushmessage", "pushmessage");
+        }
         formData.append("campaignId", id as string);
         formData.append("user_id", profile?.userId as string);
         formData.append("value", "1");
