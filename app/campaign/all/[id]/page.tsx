@@ -260,6 +260,7 @@ export default function CampaignPage() {
       const formData = new FormData();
       const total = parseInt(String(campaign?.price)) * formCount;
 
+      formData.append("pushmessage", "pushmessage");
       formData.append("campaignId", id as string);
       formData.append("user_id", profile?.userId as string);
       formData.append("value", total.toString());
@@ -274,6 +275,7 @@ export default function CampaignPage() {
       formData.append("many_names", firstForm.many_names);
       formData.append("image", image as Blob);
       formData.append("status", "PENDING");
+      formData.append("pushnoti", forms.values.toString());
 
       await axios.post(url, formData, { headers });
 

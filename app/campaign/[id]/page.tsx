@@ -274,6 +274,9 @@ export default function CampaignPage() {
         formData.append("many_names", form.many_names);
         formData.append("image", image as Blob);
         formData.append("status", "PENDING");
+        if (i === forms.length - 1) {
+          formData.append("pushnoti", forms.values.toString());
+        }
 
         await axios.post(url, formData, { headers });
       }
