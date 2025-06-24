@@ -5,7 +5,6 @@ import { ProfileInterface } from "../../interface/ProfileInterface";
 import { getCookie } from "cookies-next";
 import { getAuthHeaders } from "../../component/Headers";
 import axios from "axios";
-import { campaign_transactionsInterface } from "../../interface/campaign_transactionsInterface";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 
@@ -59,7 +58,7 @@ export default function StatusPage() {
 
   useEffect(() => {
     fetchDonation();
-  }, [profile, fetchDonation]);
+  }, [profile, fetchDonation, id]);
 
   if (isLoading == true) {
     return (
