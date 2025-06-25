@@ -21,24 +21,35 @@ export default function RootLayout({
         <div
           className="
       w-full max-w-[425px]
-      bg-[url('/1.png')] 
+      bg-[url('/bg.png')] 
         bg-cover 
         bg-bottom 
         bg-no-repeat
         h-screen
     "
         >
-          <div className="h-16 w-full max-w-[425px] text-white fixed flex justify-center items-center bg-red-950">
-            <h1 className="text-3xl text-center">กวนอิมทุ่งพิชัยออนไลน์</h1>
+          <div
+            className="h-[70px] w-full max-w-[425px] text-white fixed flex justify-center items-center 
+          bg-[url('/banner.png')] 
+        bg-cover
+        bg-bottom 
+          "
+          >
+            {/* <h1 className="text-3xl text-center">กวนอิมทุ่งพิชัยออนไลน์</h1> */}
           </div>
           <div className="w-full max-w-[375px] max-h-screen overflow-hidden mx-auto flex flex-col justify-center items-center">
             {children}
-            <div className="fixed bottom-0 w-full max-w-[425px] h-16 rounded-t-2xl flex justify-between items-center bg-red-950 text-white">
+            <div
+              className="fixed bottom-0 w-full max-w-[425px] h-[70px] rounded-t-2xl flex justify-between items-center 
+            bg-[url('/ft.png')] 
+        bg-cover 
+            "
+            >
               <Link href={"/"} className="w-full text-center text-2xl">
-                หน้าหลัก
+                {/* หน้าหลัก */}
               </Link>
               <Link href={"/status"} className="w-full text-center text-2xl">
-                สถานะกองบุญ
+                {/* สถานะกองบุญ */}
               </Link>
             </div>
           </div>

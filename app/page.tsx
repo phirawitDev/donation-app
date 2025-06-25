@@ -67,7 +67,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-full w-full overflow-hidden my-16 p-2 flex flex-col gap-2">
+    <div className="h-full w-full overflow-hidden my-18 p-2 flex flex-col gap-2">
       <div className="crad w-full rounded-lg text-center text-xl p-4 bg-white/50">
         <p className="text-lg">ยินดีต้อนรับคุณ</p>
         <p className="w-full truncate">{profile?.displayName}</p>
