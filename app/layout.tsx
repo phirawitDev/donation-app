@@ -45,10 +45,14 @@ export default function RootLayout({
         bg-cover 
             "
             >
-              <Link href={"/"} className="w-full text-center text-2xl">
-                {/* หน้าหลัก */}
-              </Link>
-              <Link href={"/status"} className="w-full text-center text-2xl">
+              <Link
+                href={"/"}
+                className="w-1/2 h-[70px] text-center text-2xl"
+              ></Link>
+              <Link
+                href={"/status"}
+                className="w-1/2 h-[70px] text-center text-2xl"
+              >
                 {/* สถานะกองบุญ */}
               </Link>
             </div>
