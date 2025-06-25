@@ -11,7 +11,7 @@ import { ProfileInterface } from "./interface/ProfileInterface";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [campaigns, setCampaigns] = useState<campaignsInterface | null>();
+  const [campaigns, setCampaigns] = useState<campaignsInterface[] | null>([]);
   const [profile, setProfile] = useState<ProfileInterface | null>(null);
   const totalSlide = Array.isArray(campaigns) ? campaigns.length : 0;
 
@@ -76,7 +76,7 @@ export default function Home() {
         <h1 className="text-2xl text-center font-bold my-2">
           กองบุญที่เปิดให้ร่วมบุญ
         </h1>
-        {campaigns === null && (
+        {campaigns?.length === 0 && (
           <div className="h-[80%] w-full flex flex-col gap-2 justify-center items-center">
             <span className="loading loading-infinity loading-xl"></span>
             <p className="text-center text-xl">
