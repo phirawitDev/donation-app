@@ -76,7 +76,7 @@ export default function Home() {
         <h1 className="text-2xl text-center font-bold my-2">
           กองบุญที่เปิดให้ร่วมบุญ
         </h1>
-        {!campaigns && (
+        {campaigns === null && (
           <div className="h-[80%] w-full flex flex-col gap-2 justify-center items-center">
             <span className="loading loading-infinity loading-xl"></span>
             <p className="text-center text-xl">
