@@ -59,9 +59,19 @@ export default function CampaignPage() {
 
   const fetchOldDonation = async () => {
     try {
-      const url =
+      let url =
         process.env.NEXT_PUBLIC_API_URL +
         `/donation/previous/${profile?.userId}`;
+      if (campaign?.formDetails === "fullName") {
+        url =
+          process.env.NEXT_PUBLIC_API_URL +
+          `/donation/previousfullname/${profile?.userId}`;
+      } else if (campaign?.formDetails === "fullName_BirthDay") {
+        url =
+          process.env.NEXT_PUBLIC_API_URL +
+          `/donation/previous/${profile?.userId}`;
+      }
+
       const headers = getAuthHeaders();
 
       const Old = await axios.get(url, { headers });
