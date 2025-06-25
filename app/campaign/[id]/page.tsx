@@ -289,7 +289,7 @@ export default function CampaignPage() {
   };
 
   return (
-    <div className=" w-full overflow-hidden my-18 p-2 flex flex-col gap-2">
+    <div className=" h-full w-full overflow-hidden my-18 p-2 flex flex-col gap-2">
       <div className="crad w-full rounded-lg text-center text-xl py-4 px-1 bg-white/90">
         <ul className="steps w-full">
           <li className={`step text-xs step-success `}>เลือกจำนวน</li>
