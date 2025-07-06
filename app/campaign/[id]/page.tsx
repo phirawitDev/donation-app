@@ -68,7 +68,7 @@ export default function CampaignPage() {
         url =
           process.env.NEXT_PUBLIC_API_URL +
           `/donation/previous/${profile?.userId}`;
-      } else if (campaign?.formDetails === "fullName_BirthDay") {
+      } else if (campaign?.formDetails === "many_Names") {
         url =
           process.env.NEXT_PUBLIC_API_URL +
           `/donation/previousmanynames/${profile?.userId}`;
