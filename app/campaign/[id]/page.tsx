@@ -59,9 +59,7 @@ export default function CampaignPage() {
 
   const fetchOldDonation = async () => {
     try {
-      let url =
-        process.env.NEXT_PUBLIC_API_URL +
-        `/donation/previous/${profile?.userId}`;
+      let url = "";
       if (campaign?.formDetails === "fullName") {
         url =
           process.env.NEXT_PUBLIC_API_URL +
@@ -83,6 +81,10 @@ export default function CampaignPage() {
       if (Old.status === 200) {
         setIsLoading(false);
         setOldDonation(Old.data.campaign_transactions);
+        const modal = document.getElementById(
+          "modalOldDonation"
+        ) as HTMLDialogElement | null;
+        modal?.showModal();
       }
     } catch (error: unknown) {
       const e = error as Error;
@@ -139,10 +141,6 @@ export default function CampaignPage() {
 
   const modalOldDonation = () => {
     fetchOldDonation();
-    const modal = document.getElementById(
-      "modalOldDonation"
-    ) as HTMLDialogElement | null;
-    modal?.showModal();
   };
 
   const handleSeleted = async (old: FormEntry) => {
@@ -890,6 +888,7 @@ export default function CampaignPage() {
                   >
                     <h1 className="text-lg text-left w-full truncate">
                       {old.name}
+                      {old.many_names}
                     </h1>
                   </button>
                 ))}
