@@ -71,7 +71,11 @@ export default function StatusPage() {
         <p className="w-full truncate">{profile?.displayName}</p>
       </div>
       <div className="w-full h-[70vh] overflow-hidden overflow-y-auto bg-white rounded-lg">
-        <h1 className="text-2xl text-center font-bold my-2">สถานะกองบุญ</h1>
+        <h1 className="text-2xl text-center font-bold">สถานะกองบุญ</h1>
+        <h1 className="text-md text-center">*สถานะส่งภาพแล้ว</h1>
+        <h1 className="text-md text-center  my-2">
+          (สามารถกดที่แถบสถานะเพื่อดูภาพที่ได้)
+        </h1>
         <div className="flex flex-col gap-2 p-2">
           {Array.isArray(olds) &&
             olds.map((old: campaign_transactionsInterface) => (

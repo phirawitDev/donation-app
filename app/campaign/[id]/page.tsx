@@ -70,6 +70,10 @@ export default function CampaignPage() {
         url =
           process.env.NEXT_PUBLIC_API_URL +
           `/donation/previous/${profile?.userId}`;
+      } else if (campaign?.formDetails === "fullName_BirthDay") {
+        url =
+          process.env.NEXT_PUBLIC_API_URL +
+          `/donation/previousmanynames/${profile?.userId}`;
       }
 
       const headers = getAuthHeaders();
