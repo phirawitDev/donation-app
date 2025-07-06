@@ -178,6 +178,19 @@ export default function CampaignPage() {
       ) as HTMLDialogElement | null;
       modal?.close();
       setForms(newForms);
+    } else if (campaign?.formDetails === "many_Names") {
+      const newForms = [...forms];
+      // อัปเดตข้อมูลในฟอร์มชุดปัจจุบัน (currentIndex)
+      newForms[currentIndex] = {
+        ...newForms[currentIndex],
+        many_names: old.many_names,
+      };
+
+      const modal = document.getElementById(
+        "modalOldDonation"
+      ) as HTMLDialogElement | null;
+      modal?.close();
+      setForms(newForms);
     }
   };
 
@@ -372,7 +385,7 @@ export default function CampaignPage() {
                     (ชุดที่ {currentIndex + 1} จาก {formCount})
                   </p>
                 </div>
-                {campaign?.formDetails !== "many_Names" && (
+                {campaign?.formDetails !== "" && (
                   <div className="flex justify-center">
                     <button
                       type="button"
